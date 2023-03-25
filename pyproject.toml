@@ -8,6 +8,8 @@ packages = [{include = "distributed_tic_tac_toe"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+pytest = "^7.2.2"
+pylint = "^2.17.1"
 
 
 [build-system]
