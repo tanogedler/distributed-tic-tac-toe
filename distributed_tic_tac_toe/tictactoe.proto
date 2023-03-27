@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+message DateTimeRequest {
+  // No fields needed
+}
+
+message ClockAdjustmentRequest {
+  int64 adjustment = 1;
+}
+
+
+message DateTimeResponse {
+  string date_time = 1;
+  int64 server_clock = 2;
+  bool adjust_clock = 3;
+}
+
+message GetLeaderRequest {
+  // No fields needed
+}
+
+message GetLeaderResponse {
+  string leader = 1;
+}
+
+message StartElectionRequest {
+  string node_id = 1;
+}
+
+message StartElectionResponse {
+  string node_id = 1;
+  string leader = 2;
+}
+
+message HeartbeatRequest {
+  string node_id = 1;
+}
+
+message HeartbeatResponse {
+  // No fields needed
+}
+
+service BerkeleyClock {
+  rpc GetDateTime(DateTimeRequest) returns (DateTimeResponse);
+  rpc SyncClock(ClockAdjustmentRequest) returns (DateTimeResponse);
+}
+
+service BullyElection {
+  rpc StartElection(StartElectionRequest) returns (StartElectionResponse);
+  rpc GetLeader(GetLeaderRequest) returns (GetLeaderResponse);
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+}
+
+
+service TicTacToe {
+  rpc StartGame (StartGameRequest) returns (StartGameResponse) {}
+  rpc SetSymbol (SetSymbolRequest) returns (SetSymbolResponse) {}
+  rpc ListBoard (ListBoardRequest) returns (ListBoardResponse) {}
+}
+
+
+message StartGameRequest {
+  string player1 = 1;
+  string player2 = 2;
+}
+
+message StartGameResponse {
+  string player1 = 1;
+  string player2 = 2;
+}
+
+message SetSymbolRequest {
+  int32 coordinate = 1;
+  string symbol = 2;
+}
+
+message SetSymbolResponse {
+  int32 coordinate = 1;
+  string symbol = 2;
+}
+
+message ListBoardRequest {
+  string board = 1;
+}
+
+message ListBoardResponse {
+  string board = 1;
+}
+
+
