@@ -177,12 +177,3 @@ class Player:
 # play
 # instantiate the board
 board = Board()
-
-# instantiate the players
-player1 = Player('X')
-player2 = Player('O')
-
-# start the game
-start_game([player1, player2])
-
-# play
